@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ms" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP Moreh Ramadan 1447H</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'shimmer': 'shimmer 3s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        shimmer: {
+                            '100%': { transform: 'translateX(100%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-image: url('https://www.transparenttextures.com/patterns/moroccan-flower.png');
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .gold-gradient {
+            background: linear-gradient(to right, #d4af37, #fff8b0, #c5a030, #fff282, #b8860b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gold-bg {
+            background: linear-gradient(135deg, #d4af37 0%, #fff8b0 50%, #c5a030 100%);
+        }
+        
+        /* Glassmorphism Styles for the Main Wrapper */
+        .glass-wrapper {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 15px 40px 0 rgba(2, 44, 34, 0.2);
+        }
+        .dark .glass-wrapper {
+            background: rgba(2, 44, 34, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.6);
+        }
+
+        /* Twinkling Stars Animation */
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.1; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            animation: twinkle infinite ease-in-out;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-emerald-600 text-emerald-950 dark:bg-[#011a14] dark:text-gray-100 min-h-screen py-8 px-4 flex justify-center items-start transition-colors duration-500 relative">
+
+    <!-- Stars Container -->
+    <div id="stars-container" class="fixed inset-0 z-0 overflow-hidden pointer-events-none"></div>
+
+    <!-- Theme Toggle Button -->
+    <div class="absolute top-4 right-4 z-50">
+        <button onclick="toggleTheme()" class="p-3 rounded-full bg-white/80 dark:bg-emerald-900/80 backdrop-blur-md shadow-lg hover:scale-110 transition-transform focus:outline-none ring-2 ring-yellow-400/50 text-emerald-900 dark:text-yellow-400 border border-white/50 dark:border-yellow-600/30">
+            <i data-lucide="sun" class="hidden dark:block w-5 h-5"></i>
+            <i data-lucide="moon" class="block dark:hidden w-5 h-5"></i>
+        </button>
+    </div>
+
+    <!-- Main Content Wrapper (z-10 to stay above stars) -->
+    <div class="max-w-md w-full mt-6 relative z-10 space-y-6">
+        
+        <!-- Unified Connected Container -->
+        <div class="glass-wrapper rounded-[2.5rem] overflow-hidden transition-all duration-500 hover:shadow-[0_20px_50px_rgba(2,44,34,0.3)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] flex flex-col group/main">
+            
+            <!-- 1. Header Section (High Contrast) -->
+            <div class="bg-emerald-950 dark:bg-black/80 p-8 text-center space-y-4 relative overflow-hidden border-b-[6px] border-yellow-500/80">
+                <!-- Inner Glow -->
+                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-yellow-500/10 to-transparent pointer-events-none"></div>
+                
+                <div class="flex justify-center mb-4 relative z-10">
+                    <div class="relative animate-float">
+                        <div class="absolute inset-0 bg-yellow-400 blur-xl opacity-30 rounded-full"></div>
+                        <i data-lucide="moon" class="relative text-yellow-400 w-16 h-16 fill-current drop-shadow-[0_0_15px_rgba(250,204,21,0.6)] group-hover/main:scale-105 transition-transform duration-500"></i>
+                    </div>
+                </div>
+                
+                <div class="inline-block px-5 py-1.5 rounded-full bg-black/40 border border-yellow-500/30 mb-2 relative z-10 shadow-inner">
+                    <p class="font-bold text-yellow-400 tracking-widest uppercase text-xs">Abe Kaki Derat</p>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl font-bold gold-gradient pb-2 title-font drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] leading-tight relative z-10">Moreh Ramadan <br>1447H</h1>
+                
+                <div class="relative z-10 bg-emerald-900/50 dark:bg-white/5 border border-emerald-800/50 dark:border-white/10 rounded-xl p-4 mt-2">
+                    <p class="text-emerald-50 text-sm italic font-medium drop-shadow-md leading-relaxed">
+                        "Assalamualaikum.. Moreh Ramadan puok kita hok mana ada seperti berikut:"
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2. Details Section (Sekatan 1) -->
+            <div class="p-6 relative border-b border-emerald-900/10 dark:border-white/10 bg-white/30 dark:bg-transparent">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 border-b border-emerald-800/10 dark:border-emerald-700/50 pb-3">
+                        <div class="bg-emerald-700/10 dark:bg-emerald-950/50 p-2.5 rounded-xl text-emerald-800 dark:text-yellow-400 transition-transform">
+                            <i data-lucide="calendar" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-emerald-800/70 dark:text-emerald-300/80 uppercase tracking-wider font-semibold">Hari & Tarikh</p>
+                            <p class="font-bold text-emerald-950 dark:text-yellow-50 text-lg">Khamis, 12/03/2026</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 border-b border-emerald-800/10 dark:border-emerald-700/50 pb-3">
+                        <div class="bg-emerald-700/10 dark:bg-emerald-950/50 p-2.5 rounded-xl text-emerald-800 dark:text-yellow-400 transition-transform">
+                            <i data-lucide="clock" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-emerald-800/70 dark:text-emerald-300/80 uppercase tracking-wider font-semibold">Masa</p>
+                            <p class="font-bold text-emerald-950 dark:text-yellow-50 text-lg">9.45 Malam <span class="text-sm font-normal italic text-emerald-800 dark:text-emerald-200">(Lepas Terawih)</span></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 border-b border-emerald-800/10 dark:border-emerald-700/50 pb-3">
+                        <div class="bg-emerald-700/10 dark:bg-emerald-950/50 p-2.5 rounded-xl text-emerald-800 dark:text-yellow-400 mt-1 transition-transform">
+                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        </div>
+                        <div class="w-full">
+                            <p class="text-xs text-emerald-800/70 dark:text-emerald-300/80 uppercase tracking-wider font-semibold">Lokasi</p>
+                            <p class="font-bold text-emerald-950 dark:text-yellow-50 mb-3 text-lg leading-tight">Restoran Sebelah Depo Mutiara</p>
+                            
+                            <!-- Map Embed Widget -->
+                            <div class="rounded-xl overflow-hidden border-2 border-emerald-100/50 dark:border-emerald-800/50 w-full h-36 mb-2 shadow-inner">
+                                <iframe 
+                                    width="100%" 
+                                    height="100%" 
+                                    frameborder="0" 
+                                    scrolling="no" 
+                                    marginheight="0" 
+                                    marginwidth="0" 
+                                    src="https://maps.google.com/maps?q=Depo%20Mutiara&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                                    class="filter dark:contrast-125 dark:brightness-90">
+                                </iframe>
+                            </div>
+                            <a href="https://maps.app.goo.gl/bnb2V94dUbhRonRz5" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/50 dark:bg-emerald-950/50 rounded-lg text-xs font-semibold text-blue-700 dark:text-blue-400 hover:bg-white dark:hover:bg-emerald-900 transition-colors backdrop-blur-sm border border-white/40 dark:border-white/5">
+                                <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Buka di Google Maps
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 pt-1">
+                        <div class="bg-yellow-400/20 dark:bg-yellow-400/10 p-2.5 rounded-xl text-emerald-800 dark:text-yellow-400 transition-transform border border-yellow-500/30">
+                            <i data-lucide="wallet" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-emerald-800/70 dark:text-emerald-300/80 uppercase tracking-wider font-semibold">Yuran</p>
+                            <p class="font-bold text-emerald-900 dark:text-yellow-400 text-2xl drop-shadow-sm">RM 7.00 <span class="text-sm font-normal">/ head</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Payment Section (Sekatan 2) -->
+            <div class="p-6 text-center relative border-b border-emerald-900/10 dark:border-white/10 bg-white/50 dark:bg-black/20">
+                <h2 class="title-font text-2xl text-emerald-950 dark:text-yellow-400 mb-5 font-bold">Maklumat Pembayaran</h2>
+                <div class="flex justify-center mb-5 relative">
+                    <div class="absolute inset-0 bg-yellow-400/20 blur-xl rounded-full scale-75"></div>
+                    <div class="bg-white p-3 rounded-2xl border-4 border-emerald-100 dark:border-yellow-600/30 inline-block shadow-lg relative z-10 transform hover:scale-105 transition-transform">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=153038925373&color=022c22" alt="QR Code Bayaran" class="w-36 h-36 rounded-lg">
+                    </div>
+                </div>
+                <div class="bg-white/40 dark:bg-black/30 rounded-xl p-4 inline-block w-full border border-white/50 dark:border-white/5 shadow-inner backdrop-blur-sm">
+                    <p class="text-emerald-800 dark:text-emerald-300 text-sm font-medium mb-1">Nama Akaun:</p>
+                    <p class="font-bold text-emerald-950 dark:text-white text-lg">Tengku Mohd Nadzrie</p>
+                    
+                    <div class="my-3 h-px w-full bg-gradient-to-r from-transparent via-emerald-800/20 dark:via-emerald-500/30 to-transparent"></div>
+                    
+                    <p class="text-emerald-800 dark:text-emerald-300 text-sm font-medium mb-2">Maybank:</p>
+                    <div class="flex items-center justify-center gap-3">
+                        <p class="font-mono text-2xl text-emerald-900 dark:text-yellow-400 tracking-wider font-bold drop-shadow-sm" id="accNumber">1530 3892 5373</p>
+                        <button onclick="copyAcc()" class="text-emerald-700 hover:text-emerald-950 dark:text-emerald-400 dark:hover:text-yellow-300 transition-colors bg-white/50 dark:bg-emerald-800/50 p-2 rounded-lg hover:shadow-md border border-white/40 dark:border-transparent active:scale-95">
+                            <i data-lucide="copy" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. RSVP Form Section (Sekatan 3) -->
+            <div class="p-6 relative border-b border-emerald-900/10 dark:border-white/10 bg-white/30 dark:bg-transparent overflow-hidden">
+                <!-- Decorative corner -->
+                <div class="absolute -top-8 -right-8 text-emerald-600/10 dark:text-yellow-500/10 transform rotate-12 pointer-events-none">
+                    <i data-lucide="sparkles" class="w-32 h-32 fill-current"></i>
+                </div>
+
+                <h2 class="title-font text-2xl text-emerald-950 dark:text-yellow-400 mb-5 relative z-10 font-bold flex items-center gap-2">
+                    <i data-lucide="pen-line" class="w-6 h-6"></i> Borang RSVP
+                </h2>
+                <form id="rsvpForm" class="space-y-5 relative z-10">
+                    <div>
+                        <label class="block text-sm text-emerald-900 dark:text-emerald-100 mb-1.5 font-semibold">Nama Anda / Panggilan</label>
+                        <input type="text" id="namaInput" required placeholder="Cth: Pok Ya" class="w-full bg-white/60 dark:bg-black/30 border border-emerald-200 dark:border-emerald-700/50 rounded-xl px-4 py-3 text-emerald-950 dark:text-white placeholder-emerald-600/50 dark:placeholder-emerald-600 focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/40 transition-all shadow-inner backdrop-blur-sm">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm text-emerald-900 dark:text-emerald-100 mb-2 font-semibold">Kehadiran</label>
+                        <div class="flex gap-3">
+                            <label class="flex-1 cursor-pointer group relative">
+                                <input type="radio" name="statusHadir" value="Hadir" checked class="peer sr-only">
+                                <div class="text-center py-3 border border-emerald-200/80 dark:border-emerald-700/50 rounded-xl bg-white/50 dark:bg-black/20 peer-checked:bg-emerald-600 peer-checked:dark:bg-emerald-800 peer-checked:border-emerald-500 peer-checked:dark:border-yellow-500 peer-checked:text-white peer-checked:dark:text-yellow-400 transition-all hover:bg-white/80 dark:hover:bg-emerald-900/40 font-semibold text-emerald-800 dark:text-emerald-200 shadow-sm peer-checked:shadow-md backdrop-blur-sm">
+                                    Hadir (On!)
+                                </div>
+                                <div class="absolute top-1 right-1 opacity-0 peer-checked:opacity-100 transition-opacity">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-white dark:text-yellow-400 fill-current"></i>
+                                </div>
+                            </label>
+                            <label class="flex-1 cursor-pointer group relative">
+                                <input type="radio" name="statusHadir" value="Tidak Hadir" class="peer sr-only">
+                                <div class="text-center py-3 border border-emerald-200/80 dark:border-emerald-700/50 rounded-xl bg-white/50 dark:bg-black/20 peer-checked:bg-red-600 peer-checked:dark:bg-red-900/60 peer-checked:border-red-500 peer-checked:text-white peer-checked:dark:text-red-300 transition-all hover:bg-white/80 dark:hover:bg-emerald-900/40 font-semibold text-emerald-800 dark:text-emerald-200 shadow-sm peer-checked:shadow-md backdrop-blur-sm">
+                                    Tak Dapat
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full gold-bg text-emerald-950 font-bold py-4 rounded-xl shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] transform transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2 text-lg border border-yellow-300/50">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                        Hantar via WhatsApp
+                    </button>
+                </form>
+            </div>
+
+            <!-- 5. RSVP List Section (Sekatan 4 - Bawah) -->
+            <div class="p-6 relative bg-white/50 dark:bg-black/20">
+                <div class="flex items-center justify-between border-b border-emerald-800/10 dark:border-emerald-700/50 pb-3 mb-4">
+                    <h2 class="title-font text-2xl text-emerald-950 dark:text-yellow-400 font-bold flex items-center gap-2">
+                        <i data-lucide="users" class="w-6 h-6"></i> Senarai Hadir
+                    </h2>
+                    <span class="bg-emerald-800 dark:bg-yellow-500/20 text-white dark:text-yellow-400 text-xs font-bold px-3 py-1 rounded-full" id="totalHadir">1 Orang</span>
+                </div>
+                
+                <ul id="senaraiNama" class="space-y-3 dark:text-emerald-50 text-emerald-900">
+                    <li class="flex items-center gap-4 bg-white/60 dark:bg-black/20 border border-white/50 dark:border-white/5 p-3 rounded-xl shadow-sm backdrop-blur-sm">
+                        <div class="relative">
+                            <span class="bg-gradient-to-br from-yellow-300 to-yellow-600 text-emerald-950 font-extrabold w-8 h-8 flex items-center justify-center rounded-full text-sm shadow-md border border-yellow-200">1</span>
+                        </div>
+                        <span class="font-bold text-lg">Kuyie</span>
+                        <i data-lucide="check" class="ml-auto w-5 h-5 text-emerald-600 dark:text-emerald-400"></i>
+                    </li>
+                </ul>
+
+                <div class="mt-8 text-center bg-white/40 dark:bg-emerald-950/40 p-5 rounded-xl border border-white/50 dark:border-emerald-800/50 shadow-inner backdrop-blur-md relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 dark:via-yellow-500/5 to-transparent skew-x-12 -translate-x-full animate-[shimmer_3s_infinite]"></div>
+                    <p class="text-sm font-extrabold text-emerald-900 dark:text-yellow-400 uppercase tracking-[0.2em] break-words leading-loose drop-shadow-sm">
+                        #KaliNiTakSelekDoh<br>
+                        #MohPakatTurunLebong
+                    </p>
+                </div>
+            </div>
+
+        </div> <!-- End of Unified Connected Container -->
+
+        <!-- Footer -->
+        <footer class="text-center text-emerald-100 dark:text-emerald-500 text-xs pb-8 pt-2 opacity-90 hover:opacity-100 transition-opacity drop-shadow-md font-medium">
+            Copyright Nikolai Nicholas.2026 untuk Abe Kaki Derat.<br>
+            <span class="italic font-bold mt-1.5 inline-block bg-black/20 dark:bg-transparent px-3 py-1 rounded-full backdrop-blur-sm text-white dark:text-emerald-400">- Lacar caro apo! -</span>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Stars Generation
+        function generateStars() {
+            const container = document.getElementById('stars-container');
+            container.innerHTML = ''; // Clear existing
+            
+            const isDark = document.documentElement.classList.contains('dark');
+            const numStars = window.innerWidth < 768 ? 40 : 80; // Less stars on mobile
+            
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                const top = Math.random() * 100;
+                const left = Math.random() * 100;
+                const size = Math.random() * 3 + 1; 
+                const delay = Math.random() * 5;
+                const duration = Math.random() * 3 + 2; 
+                const bg = isDark ? '#ffffff' : '#fde047'; 
+                
+                star.style.top = `${top}%`;
+                star.style.left = `${left}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.backgroundColor = bg;
+                star.style.boxShadow = `0 0 ${size*2}px ${bg}`; 
+                star.style.animationDelay = `${delay}s`;
+                star.style.animationDuration = `${duration}s`;
+                
+                container.appendChild(star);
+            }
+        }
+
+        // Theme Toggle Logic
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            generateStars(); 
+        }
+
+        // Init Theme & Stars
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+        } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+        }
+        
+        window.addEventListener('DOMContentLoaded', generateStars);
+        window.addEventListener('resize', () => {
+            clearTimeout(window.resizeTimer);
+            window.resizeTimer = setTimeout(generateStars, 200);
+        });
+
+        // Copy Account Number
+        function copyAcc() {
+            const accNum = "153038925373";
+            navigator.clipboard.writeText(accNum).then(() => {
+                alert("Nombor akaun Maybank berjaya disalin!");
+            });
+        }
+
+        // Handle RSVP Form Submission
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nama = document.getElementById('namaInput').value;
+            const status = document.querySelector('input[name="statusHadir"]:checked').value;
+            const nomborTelefon = "60123645931";
+            
+            let mesej = `*RSVP MOREH RAMADAN 1447H*%0A%0A`;
+            mesej += `Assalamualaikum Abe Kaki Derat, pengesahan kehadiran saya:%0A`;
+            mesej += `Nama: *${nama}*%0A`;
+            mesej += `Status: *${status}*%0A%0A`;
+            mesej += `#KaliNiTakSelekDoh #MohPakatTurunLebong`;
+
+            const waLink = `https://wa.me/${nomborTelefon}?text=${mesej}`;
+            
+            if (status === "Hadir") {
+                tambahKeSenarai(nama);
+            }
+            
+            window.open(waLink, '_blank');
+            document.getElementById('rsvpForm').reset();
+        });
+
+        function tambahKeSenarai(nama) {
+            const list = document.getElementById('senaraiNama');
+            const itemCount = list.children.length + 1;
+            
+            document.getElementById('totalHadir').innerText = `${itemCount} Orang`;
+            
+            const li = document.createElement('li');
+            li.className = "flex items-center gap-4 bg-white/80 dark:bg-emerald-800/50 border border-white dark:border-emerald-600/50 p-3 rounded-xl shadow-lg backdrop-blur-sm animate-pulse transition-all transform scale-105";
+            li.innerHTML = `
+                <div class="relative">
+                    <span class="bg-emerald-600 dark:bg-emerald-500 text-white font-extrabold w-8 h-8 flex items-center justify-center rounded-full text-sm shadow-md border border-emerald-400">
+                        <i data-lucide="loader-2" class="w-4 h-4 animate-spin absolute"></i>
+                        <span class="opacity-0">${itemCount}</span>
+                    </span>
+                </div>
+                <span class="font-bold text-lg text-emerald-950 dark:text-white">${nama}</span>
+                <span class="ml-auto text-xs bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300 px-2 py-1 rounded font-bold uppercase tracking-wider">Baru!</span>
+            `;
+            
+            list.appendChild(li);
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                li.classList.remove('animate-pulse', 'scale-105', 'bg-white/80', 'dark:bg-emerald-800/50', 'border-white', 'dark:border-emerald-600/50');
+                li.classList.add('bg-white/60', 'dark:bg-black/20', 'border-white/50', 'dark:border-white/5');
+                
+                const badge = li.querySelector('.ml-auto');
+                if(badge) {
+                    badge.outerHTML = '<i data-lucide="check" class="ml-auto w-5 h-5 text-emerald-600 dark:text-emerald-400"></i>';
+                }
+                
+                const numberSpan = li.querySelector('.relative > span');
+                numberSpan.className = "bg-gradient-to-br from-yellow-300 to-yellow-600 text-emerald-950 font-extrabold w-8 h-8 flex items-center justify-center rounded-full text-sm shadow-md border border-yellow-200 transition-all duration-500";
+                numberSpan.innerHTML = itemCount;
+                
+                lucide.createIcons();
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
