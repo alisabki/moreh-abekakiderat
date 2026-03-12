@@ -102,7 +102,6 @@
             
             <!-- 1. Header Section (High Contrast) -->
             <div class="bg-emerald-950 dark:bg-black/80 p-8 text-center space-y-4 relative overflow-hidden border-b-[6px] border-yellow-500/80">
-                <!-- Inner Glow -->
                 <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-yellow-500/10 to-transparent pointer-events-none"></div>
                 
                 <div class="flex justify-center mb-4 relative z-10">
@@ -165,7 +164,7 @@
                                     scrolling="no" 
                                     marginheight="0" 
                                     marginwidth="0" 
-                                    src="https://maps.google.com/maps?q=Depo%20Mutiara&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                                    src="https://maps.google.com/maps?q=Depo%20Mutiara,%20Kota%20Bharu,%20Kelantan&t=&z=15&ie=UTF8&iwloc=&output=embed"
                                     class="filter dark:contrast-125 dark:brightness-90">
                                 </iframe>
                             </div>
@@ -214,7 +213,6 @@
 
             <!-- 4. RSVP Form Section (Sekatan 3) -->
             <div class="p-6 relative border-b border-emerald-900/10 dark:border-white/10 bg-white/30 dark:bg-transparent overflow-hidden">
-                <!-- Decorative corner -->
                 <div class="absolute -top-8 -right-8 text-emerald-600/10 dark:text-yellow-500/10 transform rotate-12 pointer-events-none">
                     <i data-lucide="sparkles" class="w-32 h-32 fill-current"></i>
                 </div>
@@ -251,7 +249,7 @@
 
                     <button type="submit" class="w-full gold-bg text-emerald-950 font-bold py-4 rounded-xl shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] transform transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2 text-lg border border-yellow-300/50">
                         <i data-lucide="send" class="w-5 h-5"></i>
-                        Hantar via WhatsApp
+                        <span>Hantar via WhatsApp</span>
                     </button>
                 </form>
             </div>
@@ -262,16 +260,12 @@
                     <h2 class="title-font text-2xl text-emerald-950 dark:text-yellow-400 font-bold flex items-center gap-2">
                         <i data-lucide="users" class="w-6 h-6"></i> Senarai Hadir
                     </h2>
-                    <span class="bg-emerald-800 dark:bg-yellow-500/20 text-white dark:text-yellow-400 text-xs font-bold px-3 py-1 rounded-full" id="totalHadir">1 Orang</span>
+                    <span class="bg-emerald-800 dark:bg-yellow-500/20 text-white dark:text-yellow-400 text-xs font-bold px-3 py-1 rounded-full" id="totalHadir">Memuatkan...</span>
                 </div>
                 
                 <ul id="senaraiNama" class="space-y-3 dark:text-emerald-50 text-emerald-900">
-                    <li class="flex items-center gap-4 bg-white/60 dark:bg-black/20 border border-white/50 dark:border-white/5 p-3 rounded-xl shadow-sm backdrop-blur-sm">
-                        <div class="relative">
-                            <span class="bg-gradient-to-br from-yellow-300 to-yellow-600 text-emerald-950 font-extrabold w-8 h-8 flex items-center justify-center rounded-full text-sm shadow-md border border-yellow-200">1</span>
-                        </div>
-                        <span class="font-bold text-lg">Kuyie</span>
-                        <i data-lucide="check" class="ml-auto w-5 h-5 text-emerald-600 dark:text-emerald-400"></i>
+                    <li class="flex items-center justify-center py-6 text-emerald-700 dark:text-emerald-400">
+                        <i data-lucide="loader-2" class="w-6 h-6 animate-spin mr-2"></i> Memuatkan data...
                     </li>
                 </ul>
 
@@ -293,22 +287,20 @@
         </footer>
     </div>
 
+    <!-- Scripts (Icons & UI) -->
     <script>
-        // Initialize Icons
         lucide.createIcons();
 
-        // Stars Generation
         function generateStars() {
             const container = document.getElementById('stars-container');
-            container.innerHTML = ''; // Clear existing
+            container.innerHTML = '';
             
             const isDark = document.documentElement.classList.contains('dark');
-            const numStars = window.innerWidth < 768 ? 40 : 80; // Less stars on mobile
+            const numStars = window.innerWidth < 768 ? 40 : 80;
             
             for (let i = 0; i < numStars; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
-                
                 const top = Math.random() * 100;
                 const left = Math.random() * 100;
                 const size = Math.random() * 3 + 1; 
@@ -324,13 +316,11 @@
                 star.style.boxShadow = `0 0 ${size*2}px ${bg}`; 
                 star.style.animationDelay = `${delay}s`;
                 star.style.animationDuration = `${duration}s`;
-                
                 container.appendChild(star);
             }
         }
 
-        // Theme Toggle Logic
-        function toggleTheme() {
+        window.toggleTheme = function() {
             const html = document.documentElement;
             if (html.classList.contains('dark')) {
                 html.classList.remove('dark');
@@ -342,9 +332,8 @@
                 localStorage.setItem('theme', 'dark');
             }
             generateStars(); 
-        }
+        };
 
-        // Init Theme & Stars
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
             document.documentElement.classList.remove('light');
@@ -359,76 +348,170 @@
             window.resizeTimer = setTimeout(generateStars, 200);
         });
 
-        // Copy Account Number
-        function copyAcc() {
+        window.copyAcc = function() {
             const accNum = "153038925373";
             navigator.clipboard.writeText(accNum).then(() => {
                 alert("Nombor akaun Maybank berjaya disalin!");
             });
+        };
+    </script>
+
+    <!-- FIREBASE INTEGRATION MODULE -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // 1. SETUP FIREBASE CONFIGURATION
+        let firebaseConfig;
+        
+        // Cek jika sedang jalan di dalam Canvas (sistem sediakan config)
+        if (typeof __firebase_config !== 'undefined') {
+            firebaseConfig = JSON.parse(__firebase_config);
+        } else {
+            // PENTING UNTUK GITHUB PAGES!
+            // Ganti placeholder di bawah ini dengan config Firebase Abe sendiri nanti.
+            firebaseConfig = {
+                apiKey: "LETAK_API_KEY_ANDA",
+                authDomain: "project-id.firebaseapp.com",
+                projectId: "project-id",
+                storageBucket: "project-id.appspot.com",
+                messagingSenderId: "123456789",
+                appId: "1:123456789:web:abcdef"
+            };
         }
 
-        // Handle RSVP Form Submission
-        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+        // 2. INITIALIZE FIREBASE
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        
+        // Set ID Projek (Untuk sistem Canvas)
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'moreh-rsvp-app-2026';
+        let isAuthReady = false;
+
+        // 3. AUTHENTICATION & LISTEN TO DATA
+        async function initApp() {
+            try {
+                // Log masuk secara Anonymous
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+                isAuthReady = true;
+                
+                // Mulakan listener untuk tarik data RSVP
+                const rsvpRef = collection(db, 'artifacts', appId, 'public', 'data', 'rsvps');
+                onSnapshot(rsvpRef, (snapshot) => {
+                    const rsvps = [];
+                    snapshot.forEach(doc => {
+                        rsvps.push({ id: doc.id, ...doc.data() });
+                    });
+                    
+                    // Susun senarai ikut masa (yang lama di atas)
+                    rsvps.sort((a, b) => {
+                        const timeA = a.timestamp ? a.timestamp.toMillis() : Date.now();
+                        const timeB = b.timestamp ? b.timestamp.toMillis() : Date.now();
+                        return timeA - timeB;
+                    });
+                    
+                    renderRsvpList(rsvps);
+                }, (error) => {
+                    console.error("Ralat mengambil data:", error);
+                });
+
+            } catch (error) {
+                console.error("Ralat Log Masuk Firebase:", error);
+            }
+        }
+
+        // 4. RENDER SENARAI NAMA
+        function renderRsvpList(rsvps) {
+            const list = document.getElementById('senaraiNama');
+            list.innerHTML = ''; 
+            
+            document.getElementById('totalHadir').innerText = `${rsvps.length} Orang`;
+            
+            if (rsvps.length === 0) {
+                list.innerHTML = `<li class="text-center text-sm font-medium text-emerald-800 dark:text-emerald-300 py-6 italic opacity-80">Belum ada yang RSVP. Jadilah yang pertama!</li>`;
+                return;
+            }
+
+            rsvps.forEach((rsvp, index) => {
+                const li = document.createElement('li');
+                li.className = "flex items-center gap-4 bg-white/60 dark:bg-black/20 border border-white/50 dark:border-white/5 p-3 rounded-xl shadow-sm backdrop-blur-sm transition-all";
+                li.innerHTML = `
+                    <div class="relative">
+                        <span class="bg-gradient-to-br from-yellow-300 to-yellow-600 text-emerald-950 font-extrabold w-8 h-8 flex items-center justify-center rounded-full text-sm shadow-md border border-yellow-200">${index + 1}</span>
+                    </div>
+                    <span class="font-bold text-lg text-emerald-950 dark:text-white capitalize">${rsvp.nama}</span>
+                    <i data-lucide="check" class="ml-auto w-5 h-5 text-emerald-600 dark:text-emerald-400"></i>
+                `;
+                list.appendChild(li);
+            });
+            lucide.createIcons();
+        }
+
+        // Jalankan sistem
+        initApp();
+
+        // 5. HANDLE SUBMISSION BORANG
+        document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const nama = document.getElementById('namaInput').value;
             const status = document.querySelector('input[name="statusHadir"]:checked').value;
             const nomborTelefon = "60123645931";
             
+            // Format WhatsApp Message
             let mesej = `*RSVP MOREH RAMADAN 1447H*%0A%0A`;
             mesej += `Assalamualaikum Abe Kaki Derat, pengesahan kehadiran saya:%0A`;
             mesej += `Nama: *${nama}*%0A`;
             mesej += `Status: *${status}*%0A%0A`;
             mesej += `#KaliNiTakSelekDoh #MohPakatTurunLebong`;
-
             const waLink = `https://wa.me/${nomborTelefon}?text=${mesej}`;
-            
-            if (status === "Hadir") {
-                tambahKeSenarai(nama);
-            }
-            
-            window.open(waLink, '_blank');
-            document.getElementById('rsvpForm').reset();
-        });
 
-        function tambahKeSenarai(nama) {
-            const list = document.getElementById('senaraiNama');
-            const itemCount = list.children.length + 1;
-            
-            document.getElementById('totalHadir').innerText = `${itemCount} Orang`;
-            
-            const li = document.createElement('li');
-            li.className = "flex items-center gap-4 bg-white/80 dark:bg-emerald-800/50 border border-white dark:border-emerald-600/50 p-3 rounded-xl shadow-lg backdrop-blur-sm animate-pulse transition-all transform scale-105";
-            li.innerHTML = `
-                <div class="relative">
-                    <span class="bg-emerald-600 dark:bg-emerald-500 text-white font-extrabold w-8 h-8 flex items-center justify-center rounded-full text-sm shadow-md border border-emerald-400">
-                        <i data-lucide="loader-2" class="w-4 h-4 animate-spin absolute"></i>
-                        <span class="opacity-0">${itemCount}</span>
-                    </span>
-                </div>
-                <span class="font-bold text-lg text-emerald-950 dark:text-white">${nama}</span>
-                <span class="ml-auto text-xs bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300 px-2 py-1 rounded font-bold uppercase tracking-wider">Baru!</span>
-            `;
-            
-            list.appendChild(li);
-            lucide.createIcons();
-            
-            setTimeout(() => {
-                li.classList.remove('animate-pulse', 'scale-105', 'bg-white/80', 'dark:bg-emerald-800/50', 'border-white', 'dark:border-emerald-600/50');
-                li.classList.add('bg-white/60', 'dark:bg-black/20', 'border-white/50', 'dark:border-white/5');
+            // Jika hadir, simpan data ke Firebase sebelum buka WhatsApp
+            if (status === "Hadir" && isAuthReady) {
+                const btn = this.querySelector('button[type="submit"]');
+                const btnText = btn.querySelector('span');
+                const btnIcon = btn.querySelector('i');
                 
-                const badge = li.querySelector('.ml-auto');
-                if(badge) {
-                    badge.outerHTML = '<i data-lucide="check" class="ml-auto w-5 h-5 text-emerald-600 dark:text-emerald-400"></i>';
-                }
-                
-                const numberSpan = li.querySelector('.relative > span');
-                numberSpan.className = "bg-gradient-to-br from-yellow-300 to-yellow-600 text-emerald-950 font-extrabold w-8 h-8 flex items-center justify-center rounded-full text-sm shadow-md border border-yellow-200 transition-all duration-500";
-                numberSpan.innerHTML = itemCount;
-                
+                // Tukar UI butang kepada Loading
+                btnText.innerText = "Menyimpan...";
+                btnIcon.setAttribute('data-lucide', 'loader-2');
+                btnIcon.classList.add('animate-spin');
                 lucide.createIcons();
-            }, 2500);
-        }
+                btn.disabled = true;
+
+                try {
+                    const rsvpRef = collection(db, 'artifacts', appId, 'public', 'data', 'rsvps');
+                    await addDoc(rsvpRef, {
+                        nama: nama,
+                        timestamp: serverTimestamp()
+                    });
+                    
+                    // Buka WhatsApp lepas berjaya
+                    window.open(waLink, '_blank');
+                    this.reset();
+                } catch (error) {
+                    console.error("Ralat menyimpan RSVP:", error);
+                    alert("Maaf, ada ralat semasa menyimpan nama anda.");
+                } finally {
+                    // Pulihkan butang
+                    btnText.innerText = "Hantar via WhatsApp";
+                    btnIcon.setAttribute('data-lucide', 'send');
+                    btnIcon.classList.remove('animate-spin');
+                    lucide.createIcons();
+                    btn.disabled = false;
+                }
+            } else {
+                // Jika tak hadir, buka WhatsApp terus tanpa simpan dalam database
+                window.open(waLink, '_blank');
+                this.reset();
+            }
+        });
     </script>
 </body>
 </html>
